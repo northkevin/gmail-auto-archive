@@ -23,6 +23,10 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -31,6 +35,7 @@ module.exports = {
       patterns: [
         { from: 'src/manifest.json', to: 'manifest.json' },
         { from: 'src/popup/index.html', to: 'popup.html' },
+        { from: 'src/popup/styles.css', to: 'styles.css' },
         { from: 'src/icons', to: 'icons' },
       ],
     }),

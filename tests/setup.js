@@ -19,3 +19,6 @@ global.chrome = {
     }
   }
 };
+
+// Setup fake timers
+jest.useFakeTimers();

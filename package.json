@@ -6,6 +6,8 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "NODE_ENV=production webpack",
+    "dev-build": "NODE_ENV=development webpack",
+    "prod-build": "NODE_ENV=production webpack",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -23,10 +25,10 @@
     "css-loader": "^6.10.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "msw": "^2.7.3",
     "style-loader": "^3.3.4",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
-  }
+  },
+  "dependencies": {}
 }

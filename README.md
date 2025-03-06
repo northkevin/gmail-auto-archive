@@ -5,7 +5,7 @@ A Chrome extension that automatically archives unread emails in Gmail.
 ## Features
 
 - Automatically archives unread emails from Gmail
-- Mock API responses for local development and testing
+- Simple mock API responses for local development and testing
 - Configurable archiving schedule
 
 ## Development Setup
@@ -28,6 +28,9 @@ pnpm install
 # Start development build with watch mode
 pnpm start
 
+# Build for development with mocks
+pnpm dev-build
+
 # Build for production
 pnpm build
 
@@ -37,7 +40,7 @@ pnpm test
 
 ### Loading the Extension in Chrome
 
-1. Build the extension: `pnpm build`
+1. Build the extension: `pnpm build` (or `pnpm dev-build` for development with mocks)
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable "Developer mode" in the top-right corner
 4. Click "Load unpacked" and select the `dist` directory from this project
@@ -55,9 +58,8 @@ gmail-auto-archive/
 │   │   └── index.js
 │   ├── icons/                # Icons
 │   ├── manifest.json         # Extension manifest
-│   └── mocks/                # MSW mocks
-│       ├── handlers.js
-│       └── browser.js
+│   └── mocks/                # API mocks
+│       └── mockApi.js        # Simple fetch interceptor for mocking
 ├── dist/                     # Build output (for loading unpacked)
 ├── tests/                    # Test files
 ├── webpack.config.js         # Webpack configuration
@@ -65,9 +67,19 @@ gmail-auto-archive/
 └── package.json              # Project configuration
 ```
 
+## Mocking
+
+The extension uses a simple fetch interceptor for mocking API responses during development. When you build with `pnpm dev-build`, the extension will use mock data instead of making real API calls to Gmail.
+
+The mock implementation:
+- Intercepts fetch requests to Gmail API endpoints
+- Returns predefined mock responses
+- Provides detailed logging for debugging
+- Shows a status indicator in the popup
+
 ## Testing
 
-This project uses Jest for testing and MSW (Mock Service Worker) for API mocking.
+This project uses Jest for testing.
 
 ```bash
 # Run tests

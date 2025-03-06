@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    publicPath: '/',
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -44,4 +45,15 @@ module.exports = {
       ],
     }),
   ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 9000,
+    hot: false,
+    liveReload: false,
+    devMiddleware: {
+      writeToDisk: true,
+    },
+  },
 };
